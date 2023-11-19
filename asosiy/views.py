@@ -8,3 +8,13 @@ class BolimlarView(View):
 
     def post(self, request):
         pass
+
+
+class MahsulotlarView(View):
+    def get(self, request):
+        return render(request, "products.html")
+
+
+class MijozlarView(View):
+    def get(self, request):
+        return render(request, "clients.html")
