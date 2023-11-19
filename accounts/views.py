@@ -16,3 +16,9 @@ class LoginView(View):
             return redirect("/")
         login(request, user)
         return redirect("/asosiy/bolimlar/")
+
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect("/")
