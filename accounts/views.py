@@ -8,4 +8,11 @@ class LoginView(View):
         return render(request, "home.html")
 
     def post(self, request):
-        pass
+        user = authenticate(
+            username=request.POST.get("login"),
+            password=request.POST.get("password")
+        )
+        if user is None:
+            return redirect("/")
+        login(request, user)
+        return redirect("/asosiy/bolimlar/")
