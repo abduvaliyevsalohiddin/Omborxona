@@ -11,4 +11,4 @@ class Ombor(AbstractUser):
     tel = models.CharField(max_length=30, blank=True)
 
     def __str__(self):
-        return self.ism
+        return self.username
