@@ -69,3 +69,21 @@ class MahsulotlarUpdateView(View):
             ombor=request.user
         )
         return redirect("/asosiy/mahsulotlar/")
+
+
+class MijozlarUpdateView(View):
+    def get(self, request, son):
+        content = {
+            "mijoz": Mijoz.objects.get(id=son)
+        }
+        return render(request, "client_update.html", content)
+
+    def post(self, request, son):
+        Mijoz.objects.filter(id=son).update(
+            ism=request.POST.get("ism"),
+            nom=request.POST.get("nom"),
+            manzil=request.POST.get("manzil"),
+            tel=request.POST.get("tel"),
+            ombor=request.user
+        )
+        return redirect("/asosiy/clientlar/")
