@@ -48,7 +48,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
-      
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -151,7 +151,7 @@
                             <td>{{ mahsulot.narx }} so'm</td>
                             <td>{{ mahsulot.miqdor }} {{ mahsulot.olchov }}</td>
                             <td>{{ mahsulot.kelgan_sana }}</td>
-                            <td><a href="#"><button type="submit" class="btn btn-danger" data-toggle="modal">Tahrirlash</button></a></td>
+                            <td><a href="/asosiy/mahsulotlar_update/{{ mahsulot.id }}/"><button type="submit" class="btn btn-danger" data-toggle="modal">Tahrirlash</button></a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -159,18 +159,18 @@
             </div>
         </div>
     </div>
-    
+
     <!-- The Modal -->
     <div class="modal" id="myModal">
       <div class="modal-dialog">
         <div class="modal-content">
-    
+
           <!-- Modal Header -->
           <div class="modal-header bg-dark">
             <h4 class="modal-title">Yangi mahsulot</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-    
+
           <!-- Modal body -->
           <form method="post" id="new-product-form" > {% csrf_token %}
             <div class="modal-body">
@@ -204,14 +204,14 @@
                  </select>
               <br>
             </div>
-    
+
           <!-- Modal footer -->
           <div class="modal-footer">
             <button type="submit" class="btn btn-success">Qo`shish</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Yopish</button>
         </div>
       </form>
-    
+
         </div>
       </div>
     </div>
@@ -229,7 +229,7 @@
 <!-- OPTIONAL SCRIPTS -->
 <script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{% static 'dist/js/demo.js"></script>
+<script src="{% static 'dist/js/demo.js' %}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{% static 'dist/js/pages/dashboard3.js' %}"></script>
 </body>

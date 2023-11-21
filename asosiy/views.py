@@ -50,3 +50,22 @@ class MijozlarView(View):  # Vazifa 1
             ombor=request.user
         )
         return redirect("/asosiy/clientlar/")
+
+
+class MahsulotlarUpdateView(View):
+    def get(self, request, son):
+        content = {
+            "mahsulot": Mahsulot.objects.get(id=son)
+        }
+        return render(request, "product_update.html", content)
+
+    def post(self, request, son):
+        Mahsulot.objects.filter(id=son).update(
+            nom=request.POST.get("nom"),
+            brend=request.POST.get("brend"),
+            narx=request.POST.get("narx"),
+            miqdor=request.POST.get("miqdor"),
+            kelgan_sana=date.today(),
+            ombor=request.user
+        )
+        return redirect("/asosiy/mahsulotlar/")
