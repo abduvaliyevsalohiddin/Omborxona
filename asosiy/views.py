@@ -33,10 +33,20 @@ class MahsulotlarView(View):
         return redirect("/asosiy/mahsulotlar/")
 
 
-class MijozlarView(View): # Vazifa 1
+class MijozlarView(View):  # Vazifa 1
     def get(self, request):
         content = {
             "mijozlar": Mijoz.objects.filter(ombor=request.user),
             "nom": request.user.nom.capitalize()
         }
         return render(request, "clients.html", content)
+
+    def post(self, request):
+        Mijoz.objects.create(
+            ism=request.POST.get("ism"),
+            nom=request.POST.get("nom"),
+            manzil=request.POST.get("manzil"),
+            tel=request.POST.get("tel"),
+            ombor=request.user
+        )
+        return redirect("/asosiy/clientlar/")
