@@ -33,9 +33,10 @@ class MahsulotlarView(View):
         return redirect("/asosiy/mahsulotlar/")
 
 
-class MijozlarView(View):
+class MijozlarView(View): # Vazifa 1
     def get(self, request):
         content = {
             "mijozlar": Mijoz.objects.filter(ombor=request.user),
+            "nom": request.user.nom.capitalize()
         }
         return render(request, "clients.html", content)

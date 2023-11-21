@@ -55,7 +55,7 @@
     <!-- Brand Logo -->
     <a href="../index.html" class="brand-link">
       <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Online Ombor</span>
+      <span class="brand-text font-weight-light">{{ nom }}</span>
     </a>
 
     <!-- Sidebar -->
@@ -81,13 +81,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/clients/" class="nav-link active">
+            <a href="/asosiy/clientlar/" class="nav-link active">
               <i class="nav-icon far fa-circle text-danger"></i>
               <p class="text">Clients</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/goods/" class="nav-link">
+            <a href="/asosiy/mahsulotlar/" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Products</p>
             </a>
@@ -198,17 +198,17 @@
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <!-- AdminLTE -->
-<script src="dist/js/adminlte.js"></script>
+<script src="{% static 'dist/js/adminlte.js' %}"></script>
 
 <!-- OPTIONAL SCRIPTS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="{% static 'dist/js/demo.js' %}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard3.js"></script>
+<script src="{% static 'dist/js/pages/dashboard3.js' %}"></script>
 </body>
 </html>
