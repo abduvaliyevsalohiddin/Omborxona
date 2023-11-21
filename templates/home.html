@@ -17,7 +17,7 @@
         {% if form.errors %}
     <p>Login yoki parolda xatolik bor</p>
         {% endif %}
-        <form action="#" method="post">{% csrf_token %}
+        <form method="post">{% csrf_token %}
         <div class="card-body">
                 <label for="login">Login: </label>
                 <input name="login" id="login" class="form-control" type="text">
@@ -30,6 +30,6 @@
         </div>
         </form>
     </div>
-    <script src="js/main.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

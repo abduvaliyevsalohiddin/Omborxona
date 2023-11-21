@@ -112,7 +112,7 @@
             <ol class="breadcrumb float-sm-right">
              <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Clients</li>
-              <li class="breadcrumb-item"><a href="/logout/">Logout</a></li>
+              <li class="breadcrumb-item"><a href="/accounts/logout/">Logout</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -139,14 +139,16 @@
                         </tr>
                     </thead>
                     <tbody>
+                    {% for mijoz in mijozlar %}
                         <tr>
-                            <th scope="row">1.</th>
-                            <td>Ali</td>
-                            <td>Baraka</td>
-                            <td>+998911115555</td>
-                            <td>Farg'ona markazi, Askiya</td>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ mijoz.ism}}</td>
+                            <td>{{ mijoz.nom }}</td>
+                            <td>{{ mijoz.tel }}</td>
+                            <td>{{ mijoz.manzil }}</td>
                             <td><a href="#"><button type="submit" class="btn btn-danger" data-toggle="modal">Tahrirlash</button></a></td>
                         </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>

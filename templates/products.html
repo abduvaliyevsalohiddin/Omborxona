@@ -58,7 +58,7 @@
     <!-- Brand Logo -->
     <a href="../index.html" class="brand-link">
       <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Online Ombor</span>
+      <span class="brand-text font-weight-light">{{ nom }}</span>
     </a>
 
     <!-- Sidebar -->
@@ -115,7 +115,7 @@
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="stats">Home</a></li>
               <li class="breadcrumb-item active">Clients</li>
-                <li class="breadcrumb-item"><a href="logout">Logout</a></li>
+                <li class="breadcrumb-item"><a href="/accounts/logout/">Logout</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -138,18 +138,22 @@
                             <th scope="col" style="text-align: center;">Brendi</th>
                             <th scope="col" style="text-align: center;">Narxi</th>
                             <th scope="col" style="text-align: center;">Miqdori</th>
+                            <th scope="col" style="text-align: center;">Kelgan sana</th>
                             <th scope="col" style="text-align: center;"></th>
                         </tr>
                     </thead>
                     <tbody>
+                    {% for mahsulot in mahsulotlar %}
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Un</td>
-                            <td>Qozoq Oliy navi</td>
-                            <td>530000 so'm</td>
-                            <td>50</td>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ mahsulot.nom }}</td>
+                            <td>{{ mahsulot.brend }}</td>
+                            <td>{{ mahsulot.narx }} so'm</td>
+                            <td>{{ mahsulot.miqdor }} {{ mahsulot.olchov }}</td>
+                            <td>{{ mahsulot.kelgan_sana }}</td>
                             <td><a href="#"><button type="submit" class="btn btn-danger" data-toggle="modal">Tahrirlash</button></a></td>
                         </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -168,19 +172,36 @@
           </div>
     
           <!-- Modal body -->
-          <form action="#" id="new-product-form" >
+          <form method="post" id="new-product-form" > {% csrf_token %}
             <div class="modal-body">
               <label for="new-product-name">Nomi:</label>
-              <input type="text" name="pr_name" placeholder="Mahsulot nomi..." id="new-product-name" class="form-control" required>
+              <input type="text" name="nom" placeholder="Mahsulot nomi..." id="new-product-name" class="form-control" required>
               <br>
               <label for="new-product-name">Brend:</label>
-              <input type="text" name="pr_brand" placeholder="Mahsulot brendi..." id="new-product-brend" class="form-control" required>
+              <input type="text" name="brend" placeholder="Mahsulot brendi..." id="new-product-brend" class="form-control" required>
               <br>
               <label for="new-product-name">Narxi:</label>
-              <input type="text" name="pr_price" placeholder="Maxsulot narxi..." id="new-product-price" class="form-control" required>
+              <input type="text" name="narx" placeholder="Maxsulot narxi..." id="new-product-price" class="form-control" required>
               <br>
               <label for="new-product-name">Miqdori:</label>
-              <input type="number" name="pr_amount" placeholder="Mahsulot miqdori..." id="new-product-amount" class="form-control" required>
+              <input type="number" name="miqdor" placeholder="Mahsulot miqdori..." id="new-product-amount" class="form-control" required>
+              <br>
+              <label for="new-product-name">Olchov:</label>
+                <br>
+                 <select name="olchov">
+                    <option class="opt">
+                      Dona
+                    </option>
+                    <option class="opt">
+                      Kg
+                    </option>
+                     <option class="opt">
+                      Litr
+                    </option>
+                     <option class="opt">
+                      Metr
+                    </option>
+                 </select>
               <br>
             </div>
     
@@ -199,17 +220,17 @@
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <!-- AdminLTE -->
-<script src="dist/js/adminlte.js"></script>
+<script src="{% static 'dist/js/adminlte.js' %}"></script>
 
 <!-- OPTIONAL SCRIPTS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="{% static 'dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard3.js"></script>
+<script src="{% static 'dist/js/pages/dashboard3.js' %}"></script>
 </body>
 </html>
