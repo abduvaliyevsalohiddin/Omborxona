@@ -54,10 +54,15 @@ class MijozlarView(View):  # Vazifa 1
 
 class MahsulotlarUpdateView(View):
     def get(self, request, son):
-        content = {
-            "mahsulot": Mahsulot.objects.get(id=son)
-        }
-        return render(request, "product_update.html", content)
+        if request.user.is_authenticated:
+            product = Mahsulot.objects.get(id=son)
+            if product.ombor == request.user:
+                content = {
+                    "mahsulot": Mahsulot.objects.get(id=son)
+                }
+                return render(request, "product_update.html", content)
+            return redirect("/asosiy/mahsulotlar/")
+        return redirect("/")
 
     def post(self, request, son):
         Mahsulot.objects.filter(id=son).update(
@@ -73,10 +78,15 @@ class MahsulotlarUpdateView(View):
 
 class MijozlarUpdateView(View):
     def get(self, request, son):
-        content = {
-            "mijoz": Mijoz.objects.get(id=son)
-        }
-        return render(request, "client_update.html", content)
+        if request.user.is_authenticated:
+            product = Mijoz.objects.get(id=son)
+            if product.ombor == request.user:
+                content = {
+                    "mijoz": Mijoz.objects.get(id=son)
+                }
+                return render(request, "client_update.html", content)
+            return redirect("/asosiy/clientlar/")
+        return redirect("/")
 
     def post(self, request, son):
         Mijoz.objects.filter(id=son).update(
