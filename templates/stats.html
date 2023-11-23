@@ -143,7 +143,7 @@
                             <td>{{ statistika.summa }} so'm</td>
                             <td>{{ statistika.tolangan_summa }} so'm</td>
                             <td>{{ statistika.nasiya }} so'm</td>
-                            <td><a href="#">
+                            <td><a href="/stats/stats_update/{{ statistika.id }}/">
                                 <button type="submit" class="btn btn-danger" data-toggle="modal">Tahrirlash</button>
                             </a></td>
                         </tr>
@@ -166,19 +166,26 @@
                     </div>
 
                     <!-- Modal body -->
-                    <form action="#" id="new-product-form" method="post">{% csrf_token %}
+                    <form id="new-product-form" method="post">  {% csrf_token %}
                         <div class="modal-body">
-                            <label for="product">Product:</label>
-                            <input type="datetime-local" name="sana" placeholder="Sana" id="product"
-                                   class="form-control" required>
+                            <label>Product:</label>
+                            <br>
+                            <select name="mahsulot" id="product" class="form-control" required>
+                                {% for mahsulot in mahsulotlar %}
+                                <option value="{{mahsulot.id}}">
+                                    {{mahsulot.nom}}
+                                </option>
+                                {% endfor %}
+                            </select>
                             <br>
                             <label for="client">Client:</label>
-                            <input type="datetime-local" name="sana" placeholder="Sana" id="client" class="form-control"
-                                   required>
-                            <br>
-                            <label for="sana">Sana:</label>
-                            <input type="datetime-local" name="sana" placeholder="Sana" id="sana" class="form-control"
-                                   required>
+                            <select name="mijoz" id="client" class="form-control" required>
+                                {% for mijoz in mijozlar %}
+                                <option value="{{mijoz.id}}">
+                                    {{mijoz.nom}}
+                                </option>
+                                {% endfor %}
+                            </select>
                             <br>
                             <label for="miqdor">Miqdor:</label>
                             <input type="number" name="miqdor" placeholder="Miqdor" id="miqdor" class="form-control"
@@ -193,11 +200,10 @@
                                    required>
                             <br>
                             <label for="tolandi">To'landi:</label>
-                            <input type="number" name="tolandi" placeholder="To'landi" id="tolandi" class="form-control"
+                            <input type="number" name="tolangan_summa" placeholder="To'landi" id="tolandi" class="form-control"
                                    required>
                             <br>
                         </div>
-
                         <!-- Modal footer -->
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-success">Qo`shish</button>

@@ -3,5 +3,6 @@ from .views import *
 
 urlpatterns = [
     path("statislar/", StatisView.as_view()),
+    path("stats_update/<int:son>/", StatsUpdateView.as_view()),
 
 ]
