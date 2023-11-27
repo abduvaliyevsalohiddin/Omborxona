@@ -50,11 +50,11 @@
           <!-- Modal body -->
       <form method="post" id="edit-product-form"> {% csrf_token %}
             <label for="product">Mahsulot:</label>
-            <input type="text" name="mahsulot" value="{{stats.mahsulot.nom}}"  id="product" class="form-control"
+            <input type="text" name="mahsulot" value="{{stats.mahsulot.id}}"  id="product" class="form-control"
                    required disabled>
             <br>
             <label for="client">Mijoz:</label>
-            <input type="text" name="mijoz" value="{{stats.mijoz.ism}}"  id="client" class="form-control"
+            <input type="text" name="mijoz" value="{{stats.mijoz.id}}"  id="client" class="form-control"
                    required disabled>
             <br>
             <label for="miqdor">Miqdor:</label>

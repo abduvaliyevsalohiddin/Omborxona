@@ -116,6 +116,10 @@
                         <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                             Statistika qo'shish
                         </button>
+                        <form method="get">
+                            <input name="soz" type="text">
+                             <button type="submit">Search</button>
+                        </form>
                     </div>
                 </div>
                 <div class="card-body">
@@ -144,7 +148,10 @@
                             <td>{{ statistika.tolangan_summa }} so'm</td>
                             <td>{{ statistika.nasiya }} so'm</td>
                             <td><a href="/stats/stats_update/{{ statistika.id }}/">
-                                <button type="submit" class="btn btn-danger" data-toggle="modal">Tahrirlash</button>
+                                <button type="submit" class="btn btn-danger" data-toggle="modal">Update</button>
+                            </a></td>
+                            <td><a href="/stats/stats_delete/{{ statistika.id }}/">
+                                <button type="submit" class="btn btn-danger" data-toggle="modal">Delete</button>
                             </a></td>
                         </tr>
                         {% endfor %}
